@@ -1,0 +1,25 @@
+{
+  "name": "klondike",
+  "version": "0.0.0",
+  "description": "Web-based solitaire card game.",
+  "private": true,
+  "author": "Renato S. Martins <smartins.renato@gmail.com>",
+  "license": "Public Domain",
+  "keywords": [
+    "cards",
+    "game",
+    "klondike",
+    "solitaire",
+    "patience"
+  ],
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  },
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

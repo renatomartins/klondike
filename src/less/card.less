@@ -1,0 +1,28 @@
+@pokerRatio: 1.391;
+@bridgeRatio: 1.561;
+@cardWidth: 5em;
+@cardHeight: @cardWidth * @pokerRatio;
+
+.card {
+  position: relative;
+  display: inline-block;
+  width: @cardWidth;
+  height: @cardHeight;
+  overflow: hidden;
+  background-color: @white;
+  border: .08em solid @black;
+  border-radius: 0.5em;
+  box-shadow: 1px 1px 3px @black;
+
+  &.back {
+    background-color: @color3;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: .5em solid @color4;
+    }
+  }
+}

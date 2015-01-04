@@ -150,12 +150,14 @@ var CardView = Backbone.View.extend({
 
 
   onDragStart: function (e) {
+    var event = e.originalEvent;
     event.dataTransfer.setData('text/plain', this.model.getDragDropData());
     event.dataTransfer.dropEffect = 'move';
   },
 
 
   onDragEnd: function (e) {
+    var event = e.originalEvent;
     if (event.dataTransfer.dropEffect === 'move') {
       this.model.collection.remove(this.model);
     }

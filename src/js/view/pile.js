@@ -7,6 +7,14 @@ var PileView = CardsView.extend({
   },
 
 
+  removeView: function () {
+    CardsView.prototype.removeView.apply(this, arguments);
+    // when a card is moved from a pile, turn the next one up
+    if (!this.collection.isEmpty())
+      this.collection.last().set('visible', true);
+  },
+
+
   // TODO: simplify this method
   verifyDroppable: function (rank, suit, enterOrLeave) {
     var topCard = this.collection.last();

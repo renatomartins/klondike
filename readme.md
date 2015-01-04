@@ -5,7 +5,6 @@ Web-based patience card game.
 
 ## TODO
 
- * turn top card of the pile
  * move several cards at the same time
  * foundations
 

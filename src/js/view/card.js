@@ -109,6 +109,7 @@ var CardView = Backbone.View.extend({
   initialize: function (options) {
     this.render();
 
+    this.listenTo(this.model, 'change:visible', this.render);
     this.listenTo(this.model, 'switch-droppable', this.switchDroppable);
   },
 
@@ -128,6 +129,10 @@ var CardView = Backbone.View.extend({
 
 
   render: function () {
+    this.$el.empty();
+    // refresh attributes, in case the card is being turned
+    this.$el.attr(this.attributes());
+
     if (!this.isVisible())
       return this;
 

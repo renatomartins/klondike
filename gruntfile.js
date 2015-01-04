@@ -22,6 +22,25 @@ module.exports = function (grunt) {
       }
     },
 
+    jst: {
+      src: {
+        options: {
+          namespace: 'Templates',
+          templateSettings: {
+            interpolate: /\{\{(.+?)\}\}/g
+          },
+          processName: function (filepath) {
+            fileParts = filepath.split('/');
+            filename = fileParts[fileParts.length - 1].split('.');
+            return filename[0].charAt(0).toUpperCase() + filename[0].substr(1);
+          }
+        },
+        files: {
+          'build/templates.js': 'src/html/templates/**/*.html'
+        }
+      }
+    },
+
     requirejs: {
       src: {
         options: {
@@ -31,6 +50,7 @@ module.exports = function (grunt) {
             'jquery',
             'backbone',
             'model/card',
+            'templates',
             'view/card',
             'app'
           ],
@@ -39,7 +59,8 @@ module.exports = function (grunt) {
           paths: {
             jquery: '../../bower_components/jquery/dist/jquery.min',
             underscore: '../../bower_components/underscore/underscore-min',
-            backbone: '../../bower_components/backbone/backbone'
+            backbone: '../../bower_components/backbone/backbone',
+            templates: '../../build/templates'
           }
         }
       }
@@ -50,15 +71,19 @@ module.exports = function (grunt) {
         livereload: true
       },
       less: {
-        files: 'src/less/**/*',
+        files: 'src/less/**/*.less',
         tasks: ['less']
       },
       html: {
-        files: 'src/html/**/*',
+        files: 'src/html/index.html',
         tasks: ['copy']
       },
+      jst: {
+        files: 'src/html/templates/**/*.html',
+        tasks: ['jst', 'requirejs']
+      },
       js: {
-        files: 'src/js/**/*',
+        files: 'src/js/**/*.js',
         tasks: ['requirejs']
       }
     }
@@ -67,8 +92,9 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['less', 'copy', 'requirejs']);
+  grunt.registerTask('default', ['less', 'copy', 'jst', 'requirejs']);
 };

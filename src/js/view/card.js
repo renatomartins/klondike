@@ -1,5 +1,6 @@
 var CardView = Backbone.View.extend({
 
+  // classNames for card pips
   pipsClasses: (function () {
     var c = {};
     c[Card.ACE] = [
@@ -96,18 +97,7 @@ var CardView = Backbone.View.extend({
   })(),
 
 
-  template: _.template('\
-    <div class="corner">\
-      <%= rank %><div></div>\
-    </div>\
-    <div class="corner">\
-      <%= rank %><div></div>\
-    </div>\
-    <div class="pips">\
-      <% _.each(pipsClasses, function (className) { %>\
-        <div class="<%= className %>"></div>\
-      <% }); %>\
-    </div>'),
+  template: Templates.Card,
 
 
   events: {
@@ -130,6 +120,14 @@ var CardView = Backbone.View.extend({
   },
 
 
+  renderPips: function (rank) {
+    var inject = function (html, className) {
+      return html + '<div class="' + className + '"></div>';
+    };
+    return _.inject(this.pipsClasses[rank], inject, '');
+  },
+
+
   render: function () {
     // refresh classes, in case the card is being turned
     this.$el.removeClass().addClass(this.className());
@@ -140,7 +138,7 @@ var CardView = Backbone.View.extend({
     var rank = this.model.get('rank');
     this.$el.html(this.template({
       rank: rank,
-      pipsClasses: this.pipsClasses[rank]
+      pips: this.renderPips(rank)
     }));
 
     return this;

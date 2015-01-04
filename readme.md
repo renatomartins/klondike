@@ -4,7 +4,6 @@ Web-based patience card game.
 
 ## TODO
 
- * html templates to jst
  * html structure (deck, waste, foundations and piles)
  * backbone collection for deck, waste, foundations and piles
 

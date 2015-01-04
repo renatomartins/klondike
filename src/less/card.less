@@ -8,7 +8,6 @@
 .card {
   position: relative;
   display: inline-block;
-  padding: @cardSpace;
   font-family: 'monospace';
   font-weight: bold;
   width: @cardWidth;
@@ -18,6 +17,7 @@
   border: .08em solid @black;
   border-radius: 0.5em;
   box-shadow: 1px 1px 3px @black;
+  cursor: pointer;
 
   &.back {
     // http://lea.verou.me/css3patterns/#shippo
@@ -43,7 +43,7 @@
     }
   }
 
-  &.red {
+  &.suit-hearts, &.suit-diamonds {
     color: @red;
   }
 
@@ -66,54 +66,54 @@
     }
   }
 
-  &.ten .corner {
-    text-align: left;
-  }
-
-
   .pips {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: @cardHeight;
     line-height: @cardHeight;
 
     & > div {
       position: absolute;
+      margin: -.5em 0 0 -.5em;
     }
 
-    .big {
+    .figure {
       font-size: 2.5em;
     }
 
-    .h1, .h2 {
-      margin-left: -.5em;
-    }
-    .h3 {
-      margin-right: -.5em;
-    }
-    .v1, .v2, .v3, .v4, .v5 {
-      margin-top: -.5em;
-    }
+    .h1 {left: 30%}
+    .h2 {left: 50%}
+    .h3 {left: 70%}
+    .v1 {top: 20%}
+    .v2 {top: 30%}
+    .v3 {top: 35%}
+    .v4 {top: 40%}
+    .v5 {top: 50%}
+    .v6 {top: 60%}
+    .v7 {top: 65%}
+    .v8 {top: 70%}
+    .v9 {top: 80%}
     .v6, .v7, .v8, .v9 {
-      margin-bottom: -.5em;
       transform: rotate(180deg);
     }
+  }
+}
 
-    .h1 {left: 30%;}
-    .h2 {left: 50%;}
-    .h3 {right: 30%;}
 
-    .v1 {top: 20%;}
-    .v2 {top: 30%;}
-    .v3 {top: 35%;}
-    .v4 {top: 40%;}
-    .v5 {top: 50%;}
-    .v6 {bottom: 40%;}
-    .v7 {bottom: 35%;}
-    .v8 {bottom: 30%;}
-    .v9 {bottom: 20%;}
-
+.rank-10 .corner {text-align: left;}
+.corner > div,
+.pips > div {
+  .icon;
+  &:before {
+    .suit-hearts & {.icon-heart}
+    .suit-diamonds & {.icon-diamond}
+    .suit-spades & {.icon-spade}
+    .suit-clubs & {.icon-club}
+  }
+}
+.pips > div {
+  &.figure:before {
+    .rank-J & {.icon-jack}
+    .rank-Q & {.icon-queen}
+    .rank-K & {.icon-king}
   }
 }

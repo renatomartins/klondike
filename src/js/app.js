@@ -1,34 +1,12 @@
 (function () {
 
-  var ranks = [
-    'ACE',
-    'TWO',
-    'THREE',
-    'FOUR',
-    'FIVE',
-    'SIX',
-    'SEVEN',
-    'EIGHT',
-    'NINE',
-    'TEN',
-    'JACK',
-    'QUEEN',
-    'KING'
-  ];
-  var suits = [
-    'HEARTS',
-    'CLUBS',
-    'DIAMONDS',
-    'SPADES'
-  ];
-
   var cards = [];
 
-  _.each(suits, function (suit) {
-    _.each(ranks, function (rank) {
+  _.each(Card.SUITS, function (suit) {
+    _.each(Card.RANKS, function (rank) {
       cards.push({
-        rank: Card[rank],
-        suit: Card[suit]
+        rank: rank,
+        suit: suit
       });
     });
   });

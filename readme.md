@@ -5,8 +5,8 @@ Web-based patience card game.
 
 ## TODO
 
- * drag and drop cards
- * move cards between piles according to game rules
+ * turn top card of the pile
+ * move several cards at the same time
  * foundations
 
 

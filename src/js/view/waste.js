@@ -7,6 +7,11 @@ var WasteView = CardsView.extend({
 
     deck.collection.reset(models);
     this.collection.reset();
+  },
+
+
+  verifyDroppable: function () {
+    return false;
   }
 
 });

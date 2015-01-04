@@ -12,6 +12,20 @@
   border: .08em solid @black;
   cursor: pointer;
 
+  &.droppable {
+    background-color: darken(@color2, 10%);
+  }
+
+  // droppable zone
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   &.back {
     // http://lea.verou.me/css3patterns/#shippo
     background-color: @color3;

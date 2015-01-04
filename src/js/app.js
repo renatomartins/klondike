@@ -22,26 +22,29 @@
     'SPADES'
   ];
 
-  var $body = $('body');
+  var cards = [];
 
   _.each(suits, function (suit) {
     _.each(ranks, function (rank) {
-      var model = new Card({
+      cards.push({
         rank: Card[rank],
         suit: Card[suit]
       });
-      var view = new CardView({model: model});
-      $body.append(view.render().$el);
     });
-    $body.append('<br><br>');
   });
 
-  var modelBack = new Card({
-    rank: Card.ACE,
-    suit: Card.HEARTS,
-    visible: false
+  cards = _.shuffle(cards);
+
+  _.times(7, function (n) {
+    new PileView({
+      el: '#pile' + (n+1),
+      collection: new Cards(cards.splice(0, n+1))
+    });
   });
-  var backCard = new CardView({model: modelBack});
-  $body.append(backCard.render().$el);
+
+  new DeckView({
+    el: '#deck',
+    collection: new Cards(cards)
+  });
 
 }());

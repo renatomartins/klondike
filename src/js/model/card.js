@@ -1,7 +1,7 @@
 var Card = Backbone.Model.extend({
 
   defaults: {
-    visible: true
+    visible: false
   },
 
 

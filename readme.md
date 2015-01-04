@@ -2,14 +2,39 @@
 
 Web-based patience card game.
 
+
 ## TODO
 
- * html structure (deck, waste, foundations and piles)
- * backbone collection for deck, waste, foundations and piles
+ * cycle the deck and waste cards
+ * move cards between piles
+ * foundations
+
+
+## Contribute
+
+Install dependencies:
+
+```
+$ npm install
+```
+
+Compile files into `dist` folder:
+
+```
+$ grunt
+```
+
+There is a `watch` task that compile every time a file is saved:
+
+```
+$ grunt watch
+```
+
 
 ## License
 
 :globe_with_meridians: Public Domain
+
 
 ## Acknowledgments
 

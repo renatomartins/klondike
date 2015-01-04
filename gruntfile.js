@@ -50,8 +50,12 @@ module.exports = function (grunt) {
             'jquery',
             'backbone',
             'model/card',
+            'collection/cards',
             'templates',
             'view/card',
+            'view/cards',
+            'view/deck',
+            'view/pile',
             'app'
           ],
           skipModuleInsertion: true,

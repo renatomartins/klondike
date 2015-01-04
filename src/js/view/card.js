@@ -100,11 +100,6 @@ var CardView = Backbone.View.extend({
   template: Templates.Card,
 
 
-  events: {
-    'click': 'turn'
-  },
-
-
   className: function () {
     var cn = 'card ';
     if (this.isVisible())
@@ -112,6 +107,11 @@ var CardView = Backbone.View.extend({
     else
       cn += 'back';
     return cn;
+  },
+
+
+  initialize: function () {
+    this.render();
   },
 
 
@@ -129,6 +129,7 @@ var CardView = Backbone.View.extend({
 
 
   render: function () {
+    this.$el.empty();
     // refresh classes, in case the card is being turned
     this.$el.removeClass().addClass(this.className());
 
@@ -136,7 +137,7 @@ var CardView = Backbone.View.extend({
       return this;
 
     var rank = this.model.get('rank');
-    this.$el.html(this.template({
+    this.$el.append(this.template({
       rank: rank,
       pips: this.renderPips(rank)
     }));

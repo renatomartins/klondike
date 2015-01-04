@@ -9,9 +9,9 @@ html {
 }
 
 body {
-  background-color: @color2;
+  background-color: @color5;
   color: @black;
-  margin: 2em;
+  margin: 3vh 3vw;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -19,4 +19,46 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#deck {
+  .emptyPile;
+  margin: 0;
+  background: @color4;
+  box-shadow: inset 0 1px 4px @black;
+  &:empty {
+    border: none;
+  }
+}
+
+#waste {
+  .emptyPile;
+}
+
+#foundations {
+  float: right;
+
+  .foundation {
+    .emptyPile;
+  }
+}
+
+#piles {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: space-between;
+
+  .pile {
+    .emptyPile;
+    margin: 0;
+
+    .card {
+      position: relative;
+      margin-bottom: -@cardHeight + 2vw;
+
+      &:hover:not(.back) {
+        margin-bottom: -@cardHeight + 3vw;
+      }
+    }
+  }
 }

@@ -1,3 +1,25 @@
+.cardFormat {
+  width: @cardWidth;
+  height: @cardHeight;
+  border-radius: 1.5vw;
+}
+
+.emptyPile {
+  .cardFormat;
+  position: relative;
+  margin-left: 2vw;
+  display: inline-block;
+  &:empty {
+    border: .5vw dotted @color4;
+  }
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+
 /* From icomoon.io/app */
 
 // @font-face {

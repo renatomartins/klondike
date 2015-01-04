@@ -116,7 +116,7 @@ var CardView = Backbone.View.extend({
 
 
   isVisible: function () {
-    return this.model && this.model.isVisible();
+    return this.model && this.model.get('visible');
   },
 
 
@@ -129,10 +129,6 @@ var CardView = Backbone.View.extend({
 
 
   render: function () {
-    this.$el.empty();
-    // refresh classes, in case the card is being turned
-    this.$el.removeClass().addClass(this.className());
-
     if (!this.isVisible())
       return this;
 
@@ -143,12 +139,6 @@ var CardView = Backbone.View.extend({
     }));
 
     return this;
-  },
-
-
-  turn: function () {
-    this.model.toggleVisible();
-    this.render();
   }
 
 });

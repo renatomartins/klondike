@@ -5,11 +5,6 @@ var Card = Backbone.Model.extend({
   },
 
 
-  isVisible: function () {
-    return this.get('visible');
-  },
-
-
   toggleVisible: function () {
     this.set('visible', !this.get('visible'));
   }

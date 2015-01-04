@@ -49,13 +49,18 @@ module.exports = function (grunt) {
           include: [
             'jquery',
             'backbone',
-            'model/card',
-            'collection/cards',
             'templates',
+
+            'model/card',
             'view/card',
+
+            'collection/cards',
             'view/cards',
+
             'view/deck',
+            'view/waste',
             'view/pile',
+
             'app'
           ],
           skipModuleInsertion: true,

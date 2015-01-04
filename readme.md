@@ -5,8 +5,8 @@ Web-based patience card game.
 
 ## TODO
 
- * cycle the deck and waste cards
- * move cards between piles
+ * drag and drop cards
+ * move cards between piles according to game rules
  * foundations
 
 

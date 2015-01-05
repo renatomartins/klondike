@@ -87,6 +87,7 @@ var CardView = Backbone.View.extend({
 
 
   events: {
+    'dblclick': 'tryFoundation',
     'dragstart': 'onDragStart',
     'dragend': 'onDragEnd'
   },
@@ -151,6 +152,18 @@ var CardView = Backbone.View.extend({
       this.$el.addClass('droppable');
     else
       this.$el.removeClass('droppable');
+  },
+
+
+  tryFoundation: function () {
+    var rank = this.model.get('rank');
+    var suit = this.model.get('suit');
+    _.each(foundations, function (foundation) {
+      if (foundation.verifyDroppable(rank, suit)) {
+        foundation.collection.add(this.model.collection.remove(this.model));
+        return;
+      }
+    }, this);
   },
 
 

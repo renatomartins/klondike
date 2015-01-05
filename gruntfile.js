@@ -59,6 +59,7 @@ module.exports = function (grunt) {
 
             'view/deck',
             'view/waste',
+            'view/foundation',
             'view/pile',
 
             'app'

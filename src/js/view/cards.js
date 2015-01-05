@@ -20,13 +20,13 @@ var CardsView = Backbone.View.extend({
     this.render();
 
     this.listenTo(this.collection, 'add', this.addView);
-    this.listenTo(this.collection, 'remove', this.removeView);
+    this.listenTo(this.collection, 'remove', this.removeCard);
     this.listenTo(this.collection, 'reset', this.render);
   },
 
 
   render: function () {
-    this.removeViews();
+    this.removeCards();
     this.collection.each(this.appendView, this);
     return this;
   },
@@ -45,12 +45,12 @@ var CardsView = Backbone.View.extend({
   },
 
 
-  removeView: function (model) {
+  removeCard: function (model) {
     this.views[model.cid].remove();
   },
 
 
-  removeViews: function () {
+  removeCards: function () {
     _.each(this.views, function (view) {
       view.remove();
     });

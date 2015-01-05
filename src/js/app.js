@@ -32,4 +32,13 @@
     collection: new Cards(cards)
   });
 
+  this.foundations = [];
+  _.times(4, function (n) {
+    var foundation = new FoundationView({
+      el: '#foundation' + (n+1),
+      collection: new Cards()
+    });
+    this.foundations.push(foundation);
+  });
+
 }());

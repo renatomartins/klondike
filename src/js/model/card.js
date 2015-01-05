@@ -5,7 +5,7 @@ var Card = Backbone.Model.extend({
   },
 
 
-  matchesSuit: function (suit) {
+  isSameSuit: function (suit) {
     return this.get('suit') === suit;
   },
 

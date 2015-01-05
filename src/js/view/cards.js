@@ -19,7 +19,7 @@ var CardsView = Backbone.View.extend({
     this.views = {};
     this.render();
 
-    this.listenTo(this.collection, 'add', this.addView);
+    this.listenTo(this.collection, 'add', this.addCard);
     this.listenTo(this.collection, 'remove', this.removeCard);
     this.listenTo(this.collection, 'reset', this.render);
   },
@@ -39,7 +39,7 @@ var CardsView = Backbone.View.extend({
   },
 
 
-  addView: function (model) {
+  addCard: function (model) {
     model.set('visible', true);
     this.appendView(model);
   },

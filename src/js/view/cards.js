@@ -87,7 +87,8 @@ var CardsView = Backbone.View.extend({
   onDrop: function (e) {
     var data = this.getDragDropData(e);
     // removes the droppable helper class
-    this.collection.last().switchDroppable(false);
+    if (!this.collection.isEmpty())
+      this.collection.last().switchDroppable(false);
     // adds the models to this collection
     this.collection.add(data);
     e.preventDefault();

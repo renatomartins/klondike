@@ -5,8 +5,10 @@ Web-based patience card game.
 
 ## TODO
 
- * move the king to empty pile
  * foundations
+ * improve the measures
+ * deal 1 or 3 cards from the deck
+ * keyboard shortcuts
 
 
 ## Contribute

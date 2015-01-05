@@ -50,7 +50,7 @@ There is a `watch` task that compiles every time a file is saved:
 $ grunt watch
 ```
 
-Now you can open `index.html` in your browser.
+Now you can open `dist/index.html` in your browser.
 
 
 You can also fill an issue, ideas or pull requests.

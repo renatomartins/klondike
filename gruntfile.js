@@ -9,7 +9,7 @@ module.exports = function (grunt) {
           paths: ['src/less', 'bower_components']
         },
         files: {
-          'style.css': 'src/less/index.less'
+          'dist/style.css': 'src/less/index.less'
         }
       }
     },
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     copy: {
       html: {
         files: {
-          'index.html': 'src/html/index.html'
+          'dist/index.html': 'src/html/index.html'
         }
       }
     },
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
             'app'
           ],
           skipModuleInsertion: true,
-          out: 'app.js',
+          out: 'dist/app.js',
           paths: {
             jquery: '../../bower_components/jquery/dist/jquery.min',
             underscore: '../../bower_components/underscore/underscore-min',

@@ -23,7 +23,7 @@ Install dependencies:
 $ npm install
 ```
 
-Compile files into `dist` folder:
+Compile files into root folder:
 
 ```
 $ grunt

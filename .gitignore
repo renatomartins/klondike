@@ -1,4 +1,6 @@
 node_modules
 bower_components
-dist
 build
+/app.js
+/index.html
+/style.css

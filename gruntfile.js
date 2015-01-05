@@ -9,7 +9,7 @@ module.exports = function (grunt) {
           paths: ['src/less', 'bower_components']
         },
         files: {
-          'dist/style.css': 'src/less/index.less'
+          'style.css': 'src/less/index.less'
         }
       }
     },
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     copy: {
       html: {
         files: {
-          'dist/index.html': 'src/html/index.html'
+          'index.html': 'src/html/index.html'
         }
       }
     },
@@ -45,7 +45,6 @@ module.exports = function (grunt) {
       src: {
         options: {
           baseUrl: 'src/js',
-          optimize: 'none',
           include: [
             'jquery',
             'backbone',
@@ -65,7 +64,7 @@ module.exports = function (grunt) {
             'app'
           ],
           skipModuleInsertion: true,
-          out: 'dist/app.js',
+          out: 'app.js',
           paths: {
             jquery: '../../bower_components/jquery/dist/jquery.min',
             underscore: '../../bower_components/underscore/underscore-min',

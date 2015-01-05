@@ -156,7 +156,14 @@ var CardView = Backbone.View.extend({
 
   onDragStart: function (e) {
     var event = e.originalEvent;
-    event.dataTransfer.setData('text/plain', this.model.getDragDropData());
+    // get all models starting from the one grabbed
+    var modelIndex = this.model.collection.lastIndexOf(this.model);
+    var models = this.model.collection.slice(modelIndex);
+    var data = _.map(models, function (model) {
+      return model.pick('rank', 'suit');
+    });
+
+    event.dataTransfer.setData('text/json', JSON.stringify(data));
     event.dataTransfer.dropEffect = 'move';
   },
 
@@ -164,7 +171,9 @@ var CardView = Backbone.View.extend({
   onDragEnd: function (e) {
     var event = e.originalEvent;
     if (event.dataTransfer.dropEffect === 'move') {
-      this.model.collection.remove(this.model);
+      var modelIndex = this.model.collection.lastIndexOf(this.model);
+      var models = this.model.collection.slice(modelIndex);
+      this.model.collection.remove(models);
     }
   }
 

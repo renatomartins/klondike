@@ -36,13 +36,9 @@ var Card = Backbone.Model.extend({
   },
 
 
+  // tells the view to add a visual hint that the card a good target
   switchDroppable: function (value) {
     this.trigger('switch-droppable', value);
-  },
-
-
-  getDragDropData: function () {
-    return this.get('rank') + '-' + this.get('suit');
   }
 
 }, {
@@ -60,14 +56,6 @@ var Card = Backbone.Model.extend({
 
   getSuitIndex: function (suit) {
     return this.SUITS.indexOf(suit);
-  },
-
-  parseDragDropData: function (data) {
-    var split = data.split('-');
-    return {
-      rank: split[0],
-      suit: split[1]
-    };
   }
 
 });

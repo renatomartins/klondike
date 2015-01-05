@@ -5,7 +5,7 @@ Web-based patience card game.
 
 ## TODO
 
- * move several cards at the same time
+ * move the king to empty pile
  * foundations
 
 

@@ -65,19 +65,19 @@ var CardsView = Backbone.View.extend({
 
   onDragEnter: function (e) {
     var data = this.getDragDropData(e);
-    this.verifyDroppable(data.rank, data.suit, true);
+    this.verifyDroppable(data[0].rank, data[0].suit, true);
   },
 
 
   onDragLeave: function (e) {
     var data = this.getDragDropData(e);
-    this.verifyDroppable(data.rank, data.suit, false);
+    this.verifyDroppable(data[0].rank, data[0].suit, false);
   },
 
 
   onDragOver: function (e) {
     var data = this.getDragDropData(e);
-    if (this.verifyDroppable(data.rank, data.suit)) {
+    if (this.verifyDroppable(data[0].rank, data[0].suit)) {
       // this marks the drop as acceptable!
       e.preventDefault();
     }
@@ -86,16 +86,18 @@ var CardsView = Backbone.View.extend({
 
   onDrop: function (e) {
     var data = this.getDragDropData(e);
+    // removes the droppable helper class
     this.collection.last().switchDroppable(false);
-    this.collection.add(new Card(data));
+    // adds the models to this collection
+    this.collection.add(data);
     e.preventDefault();
   },
 
 
   getDragDropData: function (e) {
     event = e.originalEvent;
-    var data = event.dataTransfer.getData('text/plain');
-    return Card.parseDragDropData(data);
+    var json = event.dataTransfer.getData('text/json');
+    return JSON.parse(json);
   }
 
 });

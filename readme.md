@@ -1,21 +1,36 @@
 # Klondike
 
-A simple web-based patience card game.
-It helped me learn a bit about, like:
+A simple web-based patience card game. Though, as you may notice, I'm not very good at coloring. But it's playable! :hearts:
 
- * native HTML5 drag & drop;
- * flexbox;
- * viewport lengths.
+_Tip: a narrower screen will look better, for now._
+
+### Some of the stuff inside (and around):
+
+ * Grunt
+ * Backbone
+ * Require.js
+ * LESS
+ * native HTML5 drag & drop
+ * flexbox
+ * font icons by icomoon
+ * viewport length units
 
 
 ## TODO
 
  * improve the css measures and colors
  * deal 1 or 3 cards from the deck
+ * tests please!
+ * make it extensible to support other solitaire games
  * keyboard shortcuts
 
 
 ## Contribute
+
+Requirements:
+
+ * Node.js
+ * Grunt (`npm install -g grunt-cli`)
 
 Install dependencies:
 
@@ -23,17 +38,22 @@ Install dependencies:
 $ npm install
 ```
 
-Compile files into root folder:
+Compile the source files:
 
 ```
 $ grunt
 ```
 
-There is a `watch` task that compile every time a file is saved:
+There is a `watch` task that compiles every time a file is saved:
 
 ```
 $ grunt watch
 ```
+
+Now you can open `index.html` in your browser.
+
+
+You can also fill an issue, ideas or pull requests.
 
 
 ## License

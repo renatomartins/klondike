@@ -441,7 +441,7 @@ th {
   display: inline-block;
 }
 .emptyPile:empty {
-  border: 0.5vw dotted #b64926;
+  border: 0.5vw dotted #bc9458;
 }
 .emptyPile .card {
   position: absolute;
@@ -497,8 +497,8 @@ html {
   box-sizing: inherit;
 }
 body {
-  background-color: #8e2800;
-  color: #111111;
+  background-color: #a5c261;
+  color: #2b2b2b;
   margin: 3vh 3vw;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -515,11 +515,11 @@ body {
   margin-left: 2vw;
   display: inline-block;
   margin: 0;
-  background: #b64926;
-  box-shadow: inset 0 1px 4px #111111;
+  background: #bc9458;
+  box-shadow: inset 0 1px 4px #2b2b2b;
 }
 #deck:empty {
-  border: 0.5vw dotted #b64926;
+  border: 0.5vw dotted #bc9458;
 }
 #deck .card {
   position: absolute;
@@ -538,7 +538,7 @@ body {
   display: inline-block;
 }
 #waste:empty {
-  border: 0.5vw dotted #b64926;
+  border: 0.5vw dotted #bc9458;
 }
 #waste .card {
   position: absolute;
@@ -557,7 +557,7 @@ body {
   display: inline-block;
 }
 #foundations .foundation:empty {
-  border: 0.5vw dotted #b64926;
+  border: 0.5vw dotted #bc9458;
 }
 #foundations .foundation .card {
   position: absolute;
@@ -579,7 +579,7 @@ body {
   margin: 0;
 }
 #piles .pile:empty {
-  border: 0.5vw dotted #b64926;
+  border: 0.5vw dotted #bc9458;
 }
 #piles .pile .card {
   position: absolute;
@@ -603,12 +603,12 @@ body {
   font-weight: bold;
   font-size: 2.1vw;
   overflow: hidden;
-  background-color: #f7f7f7;
-  border: 0.08em solid #111111;
+  background-color: #f9f7f3;
+  border: 0.08em solid #2b2b2b;
   cursor: pointer;
 }
-.card.droppable {
-  background-color: #ffe772;
+.card.droppable:after {
+  background-color: rgba(109, 156, 190, 0.5);
 }
 .card:after {
   content: '';
@@ -619,8 +619,8 @@ body {
   height: 100%;
 }
 .card.back {
-  background-color: #ffb03b;
-  background-image: radial-gradient(closest-side, transparent 98%, rgba(0, 0, 0, 0.3) 99%), radial-gradient(closest-side, transparent 98%, rgba(0, 0, 0, 0.3) 99%);
+  background-color: #ffc66d;
+  background-image: radial-gradient(closest-side, transparent 98%, rgba(0, 0, 0, 0.2) 99%), radial-gradient(closest-side, transparent 98%, rgba(0, 0, 0, 0.2) 99%);
   background-size: 2em 2em;
   background-position: 0 0, 1em 1em;
 }
@@ -631,14 +631,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0.5em solid #468966;
+  border: 0.5em solid #cc7833;
 }
 .card.back * {
   display: none;
 }
 .card.suit-hearts,
 .card.suit-diamonds {
-  color: #fd311d;
+  color: #da4939;
 }
 .card .corner {
   position: absolute;

@@ -12,8 +12,8 @@
   border: .08em solid @black;
   cursor: pointer;
 
-  &.droppable {
-    background-color: darken(@color2, 10%);
+  &.droppable:after {
+    background-color: fade(@color2, 50%);
   }
 
   // droppable zone
@@ -30,8 +30,8 @@
     // http://lea.verou.me/css3patterns/#shippo
     background-color: @color3;
     background-image:
-      radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.3) 99%),
-      radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.3) 99%);
+      radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.2) 99%),
+      radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.2) 99%);
     background-size: 2em 2em;
     background-position:0 0, 1em 1em;
 

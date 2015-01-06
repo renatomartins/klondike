@@ -1,20 +1,16 @@
 @cardSpace: .25em;
 
 .card {
-  .cardFormat;
+  .cardMixin;
   position: relative;
   display: inline-block;
   font-family: 'monospace';
   font-weight: bold;
-  font-size: 2.1vw;
+  font-size: 2.6vmin;
   overflow: hidden;
   background-color: @white;
-  border: .08em solid @black;
+  border: 1px solid @black;
   cursor: pointer;
-
-  &.droppable:after {
-    background-color: fade(@color2, 50%);
-  }
 
   // droppable zone
   &:after {

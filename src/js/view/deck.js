@@ -11,11 +11,6 @@ var DeckView = CardsView.extend({
     } else {
       waste.collection.add(this.collection.pop());
     }
-  },
-
-
-  verifyDroppable: function () {
-    return false;
   }
 
 });

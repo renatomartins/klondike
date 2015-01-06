@@ -2,8 +2,6 @@
 
 A patience card game to play in the browser. :hearts:
 
-_Tip: a narrower screen will look better, for now._
-
 ### Some of the stuff inside (and around):
 
  * Grunt
@@ -18,7 +16,6 @@ _Tip: a narrower screen will look better, for now._
 
 ## TODO
 
- * improve the css measures
  * deal 1 or 3 cards from the deck
  * tests please!
  * make it extensible to support other solitaire games

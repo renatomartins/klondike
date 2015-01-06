@@ -111,7 +111,6 @@ var CardView = Backbone.View.extend({
     this.render();
 
     this.listenTo(this.model, 'change:visible', this.render);
-    this.listenTo(this.model, 'switch-droppable', this.switchDroppable);
   },
 
 
@@ -147,19 +146,11 @@ var CardView = Backbone.View.extend({
   },
 
 
-  switchDroppable: function (value) {
-    if (value)
-      this.$el.addClass('droppable');
-    else
-      this.$el.removeClass('droppable');
-  },
-
-
   tryFoundation: function () {
     var rank = this.model.get('rank');
     var suit = this.model.get('suit');
     _.each(foundations, function (foundation) {
-      if (foundation.verifyDroppable(rank, suit)) {
+      if (foundation.isDroppable(rank, suit)) {
         foundation.collection.add(this.model.collection.remove(this.model));
         return;
       }

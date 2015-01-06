@@ -15,18 +15,14 @@ var PileView = CardsView.extend({
   },
 
 
-  // TODO: simplify this method
-  verifyDroppable: function (rank, suit, enterOrLeave) {
+  isDroppable: function (rank, suit) {
     if (this.collection.isEmpty()) {
       // only allow the highest rank, i.e. the king
       return rank === Card.RANKS[Card.RANKS.length-1];
     }
 
     var topCard = this.collection.last();
-    var result = topCard.isHigherRank(rank) && topCard.isAlternateSuit(suit);
-    if (enterOrLeave !== undefined && result)
-      topCard.switchDroppable(enterOrLeave);
-    return result;
+    return topCard.isHigherRank(rank) && topCard.isAlternateSuit(suit);
   }
 
 });

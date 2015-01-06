@@ -8,13 +8,6 @@ var CardsView = Backbone.View.extend({
   },
 
 
-  // Checks if this rank and suit can be dropped on the top card of this
-  // collection. Pass `enterOrLeave` (true or false) to add or remove the
-  // droppable class on the top card. Returns boolean.
-  // Override
-  verifyDroppable: function (rank, suit, enterOrLeave) {},
-
-
   initialize: function () {
     this.views = {};
     this.render();
@@ -63,21 +56,33 @@ var CardsView = Backbone.View.extend({
   },
 
 
+  // Checks if this rank and suit can be dropped on the top card of this
+  // collection. Returns boolean.
+  // Override
+  isDroppable: function (rank, suit) {
+    return false;
+  },
+
+
   onDragEnter: function (e) {
     var data = this.getDragDropData(e);
-    this.verifyDroppable(data[0].rank, data[0].suit, true);
+    if (this.isDroppable(data[0].rank, data[0].suit)) {
+      this.$el.addClass('droppable');
+    }
   },
 
 
   onDragLeave: function (e) {
     var data = this.getDragDropData(e);
-    this.verifyDroppable(data[0].rank, data[0].suit, false);
+    if (this.isDroppable(data[0].rank, data[0].suit)) {
+      this.$el.removeClass('droppable');
+    }
   },
 
 
   onDragOver: function (e) {
     var data = this.getDragDropData(e);
-    if (this.verifyDroppable(data[0].rank, data[0].suit)) {
+    if (this.isDroppable(data[0].rank, data[0].suit)) {
       // this marks the drop as acceptable!
       e.preventDefault();
     }
@@ -87,8 +92,7 @@ var CardsView = Backbone.View.extend({
   onDrop: function (e) {
     var data = this.getDragDropData(e);
     // removes the droppable helper class
-    if (!this.collection.isEmpty())
-      this.collection.last().switchDroppable(false);
+    this.$el.removeClass('droppable');
     // adds the models to this collection
     this.collection.add(data);
     e.preventDefault();

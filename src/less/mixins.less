@@ -1,16 +1,18 @@
-.cardFormat {
+.cardMixin {
   width: @cardWidth;
   height: @cardHeight;
-  border-radius: 1.5vw;
+  // border-radius: 1.5vw;
+  border-radius: .5em;
 }
 
-.emptyPile {
-  .cardFormat;
+.pileMixin {
+  .cardMixin;
   position: relative;
-  margin-left: 2vw;
+  margin-left: 2vmin;
   display: inline-block;
   &:empty {
-    border: .5vw dotted @color4;
+    // border: .5vw dotted @color4;
+    border: .2em dotted @color4;
   }
   .card {
     position: absolute;

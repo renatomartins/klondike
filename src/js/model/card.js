@@ -33,12 +33,6 @@ var Card = Backbone.Model.extend({
 
   getRankIndex: function () {
     return Card.getRankIndex(this.get('rank'));
-  },
-
-
-  // tells the view to add a visual hint that the card a good target
-  switchDroppable: function (value) {
-    this.trigger('switch-droppable', value);
   }
 
 }, {

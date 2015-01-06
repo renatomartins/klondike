@@ -427,23 +427,23 @@ th {
 }
 
 /* Klondike */
-.cardFormat {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+.cardMixin {
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
 }
-.emptyPile {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+.pileMixin {
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
   position: relative;
-  margin-left: 2vw;
+  margin-left: 2vmin;
   display: inline-block;
 }
-.emptyPile:empty {
-  border: 0.5vw dotted #bc9458;
+.pileMixin:empty {
+  border: 0.2em dotted #bc9458;
 }
-.emptyPile .card {
+.pileMixin .card {
   position: absolute;
   top: 0;
   left: 0;
@@ -497,9 +497,9 @@ html {
   box-sizing: inherit;
 }
 body {
+  margin: 3vh 3vw;
   background-color: #a5c261;
   color: #2b2b2b;
-  margin: 3vh 3vw;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -507,19 +507,23 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+#game {
+  margin: 0 auto;
+  max-width: 110vh;
+}
 #deck {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
   position: relative;
-  margin-left: 2vw;
+  margin-left: 2vmin;
   display: inline-block;
   margin: 0;
   background: #bc9458;
   box-shadow: inset 0 1px 4px #2b2b2b;
 }
 #deck:empty {
-  border: 0.5vw dotted #bc9458;
+  border: 0.2em dotted #bc9458;
 }
 #deck .card {
   position: absolute;
@@ -530,15 +534,15 @@ body {
   border: none;
 }
 #waste {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
   position: relative;
-  margin-left: 2vw;
+  margin-left: 2vmin;
   display: inline-block;
 }
 #waste:empty {
-  border: 0.5vw dotted #bc9458;
+  border: 0.2em dotted #bc9458;
 }
 #waste .card {
   position: absolute;
@@ -549,37 +553,40 @@ body {
   float: right;
 }
 #foundations .foundation {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
   position: relative;
-  margin-left: 2vw;
+  margin-left: 2vmin;
   display: inline-block;
 }
 #foundations .foundation:empty {
-  border: 0.5vw dotted #bc9458;
+  border: 0.2em dotted #bc9458;
 }
 #foundations .foundation .card {
   position: absolute;
   top: 0;
   left: 0;
 }
+#foundations .foundation:first-child {
+  margin: 0;
+}
 #piles {
-  margin-top: 5vh;
+  margin-top: 5vmin;
   display: flex;
   justify-content: space-between;
 }
 #piles .pile {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
   position: relative;
-  margin-left: 2vw;
+  margin-left: 2vmin;
   display: inline-block;
   margin: 0;
 }
 #piles .pile:empty {
-  border: 0.5vw dotted #bc9458;
+  border: 0.2em dotted #bc9458;
 }
 #piles .pile .card {
   position: absolute;
@@ -588,27 +595,32 @@ body {
 }
 #piles .pile .card {
   position: relative;
-  margin-bottom: -13vw;
+  float: left;
+  margin-bottom: -17vmin;
 }
-#piles .pile .card:hover:not(.back) {
-  margin-bottom: -12vw;
+#piles .pile .card:not(.back) {
+  margin-bottom: -15vmin;
+}
+#piles .pile .card:not(.back):hover {
+  margin-bottom: -13.5vmin;
+}
+.droppable:empty,
+.droppable .card:last-child:after {
+  background-color: rgba(109, 156, 190, 0.5);
 }
 .card {
-  width: 10.785vw;
-  height: 15vw;
-  border-radius: 1.5vw;
+  width: 12.942vmin;
+  height: 18vmin;
+  border-radius: .5em;
   position: relative;
   display: inline-block;
   font-family: 'monospace';
   font-weight: bold;
-  font-size: 2.1vw;
+  font-size: 2.6vmin;
   overflow: hidden;
   background-color: #f9f7f3;
-  border: 0.08em solid #2b2b2b;
+  border: 1px solid #2b2b2b;
   cursor: pointer;
-}
-.card.droppable:after {
-  background-color: rgba(109, 156, 190, 0.5);
 }
 .card:after {
   content: '';
@@ -658,8 +670,8 @@ body {
 }
 .card .pips {
   width: 100%;
-  height: 15vw;
-  line-height: 15vw;
+  height: 18vmin;
+  line-height: 18vmin;
 }
 .card .pips > div {
   position: absolute;

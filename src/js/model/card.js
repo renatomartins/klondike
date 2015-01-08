@@ -1,7 +1,23 @@
 var Card = Backbone.Model.extend({
 
   defaults: {
-    visible: false
+    visible: false,
+    draggable: false
+  },
+
+
+  isVisible: function () {
+    return this.get('visible');
+  },
+
+
+  isDraggable: function () {
+    return this.get('draggable');
+  },
+
+
+  isTopCard: function () {
+    return this === this.collection.last();
   },
 
 

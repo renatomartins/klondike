@@ -1,5 +1,3 @@
-@cardSpace: .25em;
-
 .card {
   .cardMixin;
   position: relative;
@@ -10,7 +8,10 @@
   overflow: hidden;
   background-color: @white;
   border: 1px solid @black;
-  cursor: pointer;
+
+  &[draggable=true] {
+    cursor: pointer;
+  }
 
   // droppable zone
   &:after {
@@ -50,6 +51,7 @@
     color: @red;
   }
 
+  @cardSpace: .25em;
   .corner {
     position: absolute;
     top: @cardSpace;

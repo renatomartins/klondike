@@ -95,11 +95,11 @@ var CardView = Backbone.View.extend({
 
   attributes: function () {
     var attrs = {};
-    if (this.isVisible()) {
+    if (this.model.isVisible()) {
       var rank = this.model.get('rank');
       var suit = this.model.get('suit');
-      attrs.draggable = true;
       attrs['class'] = 'card rank-' + rank + ' suit-' + suit;
+      attrs.draggable = this.model.isDraggable();
     } else {
       attrs['class'] = 'card back';
     }
@@ -110,12 +110,7 @@ var CardView = Backbone.View.extend({
   initialize: function (options) {
     this.render();
 
-    this.listenTo(this.model, 'change:visible', this.render);
-  },
-
-
-  isVisible: function () {
-    return this.model.get('visible');
+    this.listenTo(this.model, 'change', this.render);
   },
 
 
@@ -133,7 +128,7 @@ var CardView = Backbone.View.extend({
     // refresh attributes, in case the card is being turned
     this.$el.attr(this.attributes());
 
-    if (!this.isVisible())
+    if (!this.model.isVisible())
       return this;
 
     var rank = this.model.get('rank');
@@ -147,11 +142,14 @@ var CardView = Backbone.View.extend({
 
 
   tryFoundation: function () {
+    if (!this.model.isTopCard())
+      return;
+
     var rank = this.model.get('rank');
     var suit = this.model.get('suit');
     _.each(foundations, function (foundation) {
       if (foundation.isDroppable(rank, suit)) {
-        foundation.collection.add(this.model.collection.remove(this.model));
+        foundation.add(this.model.collection.remove(this.model));
         return;
       }
     }, this);
@@ -164,7 +162,7 @@ var CardView = Backbone.View.extend({
     var modelIndex = this.model.collection.lastIndexOf(this.model);
     var models = this.model.collection.slice(modelIndex);
     var data = _.map(models, function (model) {
-      return model.pick('rank', 'suit');
+      return model.toJSON();
     });
 
     event.dataTransfer.setData('text/json', JSON.stringify(data));

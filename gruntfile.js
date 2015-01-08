@@ -54,12 +54,14 @@ module.exports = function (grunt) {
             'view/card',
 
             'collection/cards',
+            'collection/deck',
+            'collection/waste',
+            'collection/foundation',
+            'collection/pile',
             'view/cards',
 
             'view/deck',
             'view/waste',
-            'view/foundation',
-            'view/pile',
 
             'app'
           ],

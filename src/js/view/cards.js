@@ -33,7 +33,6 @@ var CardsView = Backbone.View.extend({
 
 
   addCard: function (model) {
-    model.set('visible', true);
     this.appendView(model);
   },
 
@@ -50,23 +49,9 @@ var CardsView = Backbone.View.extend({
   },
 
 
-  reset: function () {
-    this.collection.setVisible(false);
-    this.render();
-  },
-
-
-  // Checks if this rank and suit can be dropped on the top card of this
-  // collection. Returns boolean.
-  // Override
-  isDroppable: function (rank, suit) {
-    return false;
-  },
-
-
   onDragEnter: function (e) {
     var data = this.getDragDropData(e);
-    if (this.isDroppable(data[0].rank, data[0].suit)) {
+    if (this.collection.isDroppable(data[0].rank, data[0].suit)) {
       this.$el.addClass('droppable');
     }
   },
@@ -74,7 +59,7 @@ var CardsView = Backbone.View.extend({
 
   onDragLeave: function (e) {
     var data = this.getDragDropData(e);
-    if (this.isDroppable(data[0].rank, data[0].suit)) {
+    if (this.collection.isDroppable(data[0].rank, data[0].suit)) {
       this.$el.removeClass('droppable');
     }
   },
@@ -82,7 +67,7 @@ var CardsView = Backbone.View.extend({
 
   onDragOver: function (e) {
     var data = this.getDragDropData(e);
-    if (this.isDroppable(data[0].rank, data[0].suit)) {
+    if (this.collection.isDroppable(data[0].rank, data[0].suit)) {
       // this marks the drop as acceptable!
       e.preventDefault();
     }

@@ -1,16 +1,12 @@
 var DeckView = CardsView.extend({
 
   events: {
-    'click': 'takeOne'
+    'click': 'takeCards'
   },
 
 
-  takeOne: function () {
-    if (this.collection.isEmpty()) {
-      waste.refillDeck();
-    } else {
-      waste.collection.add(this.collection.pop());
-    }
+  takeCards: function () {
+    this.collection.takeCards();
   }
 
 });

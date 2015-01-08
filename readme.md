@@ -16,7 +16,7 @@ A patience card game to play in the browser. :hearts:
 
 ## TODO
 
- * deal 1 or 3 cards from the deck
+ * start options (ex: deal 1 or 3 cards, number of passes through the deck)
  * tests please!
  * make it extensible to support other solitaire games
  * keyboard shortcuts

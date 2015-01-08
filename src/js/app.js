@@ -1,44 +1,47 @@
 (function () {
 
+  var moveCount = 1;
+
   var cards = [];
 
   _.each(Card.SUITS, function (suit) {
     _.each(Card.RANKS, function (rank) {
-      cards.push({
+      cards.push(new Card({
         rank: rank,
         suit: suit
-      });
+      }));
     });
   });
 
   cards = _.shuffle(cards);
 
-  this.piles = [];
   _.times(7, function (n) {
-    var pile = new PileView({
+    new CardsView({
       el: '#pile' + (n+1),
-      collection: new Cards(cards.splice(0, n+1))
+      collection: new Pile(cards.splice(0, n+1))
     });
-    this.piles.push(pile);
   });
 
-  this.waste = new WasteView({
+  this.waste = new Waste([], {moveCount: moveCount});
+  new WasteView({
     el: '#waste',
-    collection: new Cards()
+    collection: this.waste
   });
 
-  this.deck = new DeckView({
+  this.deck = new Deck(cards, {moveCount: moveCount});
+  new DeckView({
     el: '#deck',
-    collection: new Cards(cards)
+    collection: this.deck
   });
 
   this.foundations = [];
   _.times(4, function (n) {
-    var foundation = new FoundationView({
-      el: '#foundation' + (n+1),
-      collection: new Cards()
-    });
+    var foundation = new Foundation();
     this.foundations.push(foundation);
+    new CardsView({
+      el: '#foundation' + (n+1),
+      collection: foundation
+    });
   });
 
 }());

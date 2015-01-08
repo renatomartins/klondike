@@ -1,12 +1,9 @@
 var WasteView = CardsView.extend({
 
-  refillDeck: function () {
-    var models = this.collection.each(function (model) {
-      model.set('visible', false);
-    }).reverse();
+  initialize: function () {
+    CardsView.prototype.initialize.apply(this, arguments);
 
-    deck.collection.reset(models);
-    this.collection.reset();
+    this.$el.attr('data-count', this.collection.moveCount);
   }
 
 });

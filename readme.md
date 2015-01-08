@@ -6,7 +6,6 @@ A patience card game to play in the browser. :hearts:
 
  * Grunt
  * Backbone
- * Require.js
  * LESS
  * native HTML5 drag & drop
  * flexbox

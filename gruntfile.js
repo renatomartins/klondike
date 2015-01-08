@@ -1,7 +1,6 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
 
     less: {
       src: {
@@ -41,40 +40,35 @@ module.exports = function (grunt) {
       }
     },
 
-    requirejs: {
-      src: {
+    concat: {
+      js: {
         options: {
-          baseUrl: 'src/js',
-          include: [
-            'jquery',
-            'backbone',
-            'templates',
+          banner: '(function(){',
+          footer: '}())'
+        },
+        src: [
+          'bower_components/jquery/dist/jquery.min.js',
+          'bower_components/underscore/underscore-min.js',
+          'bower_components/backbone/backbone.js',
+          'build/templates.js',
 
-            'model/card',
-            'view/card',
+          'src/js/model/card.js',
 
-            'collection/cards',
-            'collection/deck',
-            'collection/waste',
-            'collection/foundation',
-            'collection/pile',
-            'view/cards',
+          'src/js/collection/cards.js',
+          'src/js/collection/deck.js',
+          'src/js/collection/waste.js',
+          'src/js/collection/foundation.js',
+          'src/js/collection/pile.js',
 
-            'view/deck',
-            'view/waste',
+          'src/js/view/card.js',
+          'src/js/view/cards.js',
+          'src/js/view/deck.js',
+          'src/js/view/waste.js',
 
-            'app'
-          ],
-          skipModuleInsertion: true,
-          out: 'dist/app.js',
-          paths: {
-            jquery: '../../bower_components/jquery/dist/jquery.min',
-            underscore: '../../bower_components/underscore/underscore-min',
-            backbone: '../../bower_components/backbone/backbone',
-            templates: '../../build/templates'
-          }
-        }
-      }
+          'src/js/app.js'
+        ],
+        dest: 'dist/app.js',
+      },
     },
 
     watch: {
@@ -91,11 +85,11 @@ module.exports = function (grunt) {
       },
       jst: {
         files: 'src/html/templates/**/*.html',
-        tasks: ['jst', 'requirejs']
+        tasks: ['jst', 'concat']
       },
       js: {
         files: 'src/js/**/*.js',
-        tasks: ['requirejs']
+        tasks: ['concat']
       }
     }
 
@@ -104,8 +98,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jst');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['less', 'copy', 'jst', 'requirejs']);
+  grunt.registerTask('default', ['less', 'copy', 'jst', 'concat']);
 };

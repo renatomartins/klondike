@@ -114,15 +114,6 @@ var CardView = Backbone.View.extend({
   },
 
 
-  renderPips: function (rank) {
-    var inject = function (html, className) {
-      return html + '<div class="' + className + '"></div>';
-    };
-    var rankIndex = this.model.getRankIndex();
-    return _.inject(this.pipsClasses[rankIndex], inject, '');
-  },
-
-
   render: function () {
     this.$el.empty();
     // refresh attributes, in case the card is being turned
@@ -138,6 +129,15 @@ var CardView = Backbone.View.extend({
     }));
 
     return this;
+  },
+
+
+  renderPips: function (rank) {
+    var inject = function (html, className) {
+      return html + Templates.Pip({className: className});
+    };
+    var rankIndex = this.model.getRankIndex();
+    return _.inject(this.pipsClasses[rankIndex], inject, '');
   },
 
 

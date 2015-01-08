@@ -28,11 +28,13 @@ Requirements:
 
  * Node.js
  * Grunt (`npm install -g grunt-cli`)
+ * Bower (`npm install -g bower`)
 
 Install dependencies:
 
 ```
 $ npm install
+$ bower install
 ```
 
 Compile the source files:

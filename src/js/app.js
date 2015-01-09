@@ -1,4 +1,7 @@
 var moveCount = 1;
+var passesLimit = 'infinite';
+var doubleDeck = false;
+
 var cards = [];
 
 _.each(Card.SUITS, function (suit) {
@@ -14,20 +17,20 @@ cards = _.shuffle(cards);
 
 _.times(7, function (n) {
   new CardsView({
-    el: '#pile' + (n+1),
+    el: '#game .pile' + (n+1),
     collection: new Pile(cards.splice(0, n+1))
   });
 });
 
 this.waste = new Waste([], {moveCount: moveCount});
 new WasteView({
-  el: '#waste',
+  el: '#game .waste',
   collection: this.waste
 });
 
 this.deck = new Deck(cards, {moveCount: moveCount});
 new DeckView({
-  el: '#deck',
+  el: '#game .deck',
   collection: this.deck
 });
 
@@ -36,7 +39,7 @@ _.times(4, function (n) {
   var foundation = new Foundation();
   this.foundations.push(foundation);
   new CardsView({
-    el: '#foundation' + (n+1),
+    el: '#game .foundation' + (n+1),
     collection: foundation
   });
 });

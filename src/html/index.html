@@ -2,27 +2,77 @@
 <html>
 <head>
   <title>Klondike</title>
+  <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="game">
-    <div id="deck"></div>
-    <div id="waste"></div>
-    <div id="foundations">
-      <div id="foundation1" class="foundation"></div>
-      <div id="foundation2" class="foundation"></div>
-      <div id="foundation3" class="foundation"></div>
-      <div id="foundation4" class="foundation"></div>
+  <header>
+    <div id="options">
+      <div>
+        <div class="deck" title="Deal 1 card">
+          <div class="card back"></div>
+        </div>
+        <div class="waste" title="Deal 1 card">
+          <div class="card rank-A suit-hearts">
+            <div class="pips"><i class="h2 v5 figure"></i></div>
+          </div>
+        </div>
+        <input id="deal" type="checkbox">
+        <label for="deal" title="Deal 1 or 3 cards"></label>
+        <div class="deck" title="Deal 3 cards">
+          <div class="card back"></div>
+        </div>
+        <div class="waste" data-count="3" title="Deal 3 cards">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card rank-A suit-hearts">
+            <div class="pips"><i class="h2 v5 figure"></i></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <i class="passes" title="Number of passes through the deck"></i>
+        <div class="custom-select">
+          <select title="Number of passes through the deck">
+            <option value="infinite">&infin;</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="card back" title="Single deck"></div>
+        <input id="decks" type="checkbox">
+        <label for="decks" title="Single or double deck"></label>
+        <div class="card back" title="Double deck"></div>
+        <div class="card back" title="Double deck"></div>
+      </div>
+      <div>
+        <i class="reload" title="Reload"></i>
+      </div>
     </div>
-    <div id="piles">
-      <div id="pile1" class="pile"></div>
-      <div id="pile2" class="pile"></div>
-      <div id="pile3" class="pile"></div>
-      <div id="pile4" class="pile"></div>
-      <div id="pile5" class="pile"></div>
-      <div id="pile6" class="pile"></div>
-      <div id="pile7" class="pile"></div>
+  </header>
+  <div id="game">
+    <div class="deck"></div>
+    <div class="waste"></div>
+    <div class="foundations">
+      <div class="foundation1"></div>
+      <div class="foundation2"></div>
+      <div class="foundation3"></div>
+      <div class="foundation4"></div>
+    </div>
+    <div class="piles">
+      <div class="pile1"></div>
+      <div class="pile2"></div>
+      <div class="pile3"></div>
+      <div class="pile4"></div>
+      <div class="pile5"></div>
+      <div class="pile6"></div>
+      <div class="pile7"></div>
     </div>
   </div>
 

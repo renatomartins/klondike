@@ -1,0 +1,89 @@
+input[type="checkbox"] {
+  display: none;
+
+  & + label {
+    position: relative;
+    display: inline-block;
+    outline: 0;
+    padding: .15em;
+    width: 3.2em;
+    height: 1.6em;
+    background: @color3;
+    border: .2em solid @color1;
+    border-radius: .8em;
+    cursor: pointer;
+
+    &:after {
+      position: relative;
+      left: 0;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 50%;
+      background: @color1;
+      border-radius: 50%;
+      transition: left 0.2s;
+    }
+  }
+
+  &:checked + label:after {
+    left: 50%;
+    transition: left 0.2s;
+  }
+}
+
+// .custom-select {
+//   position: relative;
+//   display: inline-block;
+//   width: 3.2em;
+//   height: 1.6em;
+//   line-height: 1.6em;
+
+//   select {
+//     outline: 0;
+//     padding: 0 .2em;
+//     // width: 3.2em;
+//     // height: 1.6em;
+//     // line-height: 1.6em;
+//     background: @color3;
+//     border: .2em solid @color1;
+//     border-radius: .8em;
+//   }
+// }
+
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  background: @color3;
+  border: .2em solid @color1;
+  border-radius: .8em;
+  width: 3.2em;
+  height: 1.6em;
+  line-height: 1.3em;
+  padding: 0 .2em;
+  overflow: hidden;
+
+  select {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    outline: 0;
+    background: transparent;
+    border: 0;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &:after {
+    content: "⯆";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.2em;
+    height: 100%;
+    text-align: center;
+    background: @color3;
+    pointer-events: none;
+  }
+}

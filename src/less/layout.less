@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  margin: 3vh 3vw;
+  margin: 0 3vw 3vh;
   background-color: @color5;
   background-image: linear-gradient(@color5, @color6);
   color: @black;
@@ -22,12 +22,70 @@ body {
   user-select: none;
 }
 
+header {
+  height: @headerHeight;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: fade(@white, 30%);
+
+  #options {
+    margin: 0 auto;
+    max-width: 110vh;
+    font-size: 2vmin;
+    text-align: right;
+    height: @headerHeight;
+    line-height: @headerHeight;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+
+    & > div {
+      margin-left: 3em;
+
+      & > * {
+        vertical-align: middle;
+      }
+    }
+
+    label {
+      margin: 0;
+    }
+
+    .waste, .deck {
+      height: @cardHeight / 5;
+      width: @cardWidth / 5;
+      cursor: initial;
+    }
+    .waste {
+      margin-left: 0;
+    }
+    .card {
+      height: @cardHeight / 5;
+      width: @cardWidth / 5;
+      font-size: @cardFontSize / 5;
+    }
+
+    .passes:before {
+      .icon-passes;
+      font-size: 1.4em;
+    }
+
+    .reload:before {
+      .icon-reload;
+      cursor: pointer;
+      font-size: 1.4em;
+    }
+  }
+}
+
 #game {
-  margin: 0 auto;
+  margin: @headerHeight+3vmin auto 3vmin;
   max-width: 110vh;
 }
 
-#deck {
+.deck {
   .pileMixin;
   margin: 0;
   background: @color4;
@@ -39,16 +97,18 @@ body {
   }
 }
 
-#waste {
+.waste {
   .pileMixin;
 
   &[data-count="3"] .card {
     &:nth-last-child(1) {
-      margin-left: 5.2vmin;
+      // margin-left: 5.2vmin;
+      margin-left: 2em;
     }
     &:nth-last-child(2),
     &:nth-child(2) {
-      margin-left: 2.6vmin;
+      // margin-left: 2.6vmin;
+      margin-left: 1em;
     }
     &:first-child {
       margin-left: 0;
@@ -56,10 +116,10 @@ body {
   }
 }
 
-#foundations {
+.foundations {
   float: right;
 
-  .foundation {
+  [class^="foundation"] {
     .pileMixin;
 
     &:first-child {
@@ -68,12 +128,12 @@ body {
   }
 }
 
-#piles {
+.piles {
   margin-top: 5vmin;
   display: flex;
   justify-content: space-between;
 
-  .pile {
+  [class^="pile"] {
     .pileMixin;
     margin: 0;
 

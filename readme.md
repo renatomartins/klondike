@@ -17,8 +17,9 @@ A patience card game to play in the browser. :hearts:
 
  * start options (ex: deal 1 or 3 cards, number of passes through the deck)
  * tests please!
+ * move cards with clicks
  * make it extensible to support other solitaire games
- * keyboard shortcuts
+ * keyboard shortcuts & ARIA
 
 
 ## Contribute

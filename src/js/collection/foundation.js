@@ -8,7 +8,7 @@ var Foundation = Cards.extend({
   onAdd: function (model) {
     // check if all foundations are complete
     var isComplete = _.all(foundations, function (foundation) {
-      return foundation.length === Card.RANKS.length * Card.SUITS.length;
+      return foundation.length === Card.RANKS.length;
     });
 
     if (isComplete) {

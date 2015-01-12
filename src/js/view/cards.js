@@ -10,7 +10,6 @@ var CardsView = Backbone.View.extend({
 
   initialize: function () {
     this.views = {};
-    this.render();
 
     this.listenTo(this.collection, 'add', this.addCard);
     this.listenTo(this.collection, 'remove', this.removeCard);

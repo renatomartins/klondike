@@ -1,8 +1,6 @@
 var Waste = Cards.extend({
 
-  initialize: function (models, options) {
-    this.moveCount = options.moveCount;
-
+  initialize: function () {
     this.on('add', this.onAdd);
     this.on('remove', this.onRemove);
   },
@@ -13,8 +11,9 @@ var Waste = Cards.extend({
 
     if (model.isTopCard()) {
       attrs.draggable = true;
+      var moveCount = settings.get('moveCount');
       // make previous top card not draggable
-      var previous = this.slice(-this.moveCount - 1, -this.moveCount);
+      var previous = this.slice(-moveCount - 1, -moveCount);
       if (previous.length)
         previous[0].set({draggable: false});
     }

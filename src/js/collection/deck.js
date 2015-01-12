@@ -1,15 +1,17 @@
 var Deck = Cards.extend({
 
-  initialize: function (models, options) {
-    this.moveCount = options.moveCount;
-  },
+  passes: 0,
 
 
   takeCards: function () {
-    if (this.isEmpty())
-      this.refill();
-    else
+    if (this.isEmpty()) {
+      ++this.passes;
+      var passesLimit = settings.get('passesLimit');
+      if (passesLimit === 'infinite' || this.passes < passesLimit)
+        this.refill();
+    } else {
       this.moveToWaste();
+    }
   },
 
 
@@ -26,7 +28,7 @@ var Deck = Cards.extend({
 
 
   moveToWaste: function () {
-    var models = this.last(this.moveCount).reverse();
+    var models = this.last(settings.get('moveCount')).reverse();
     waste.add(this.remove(models));
   }
 

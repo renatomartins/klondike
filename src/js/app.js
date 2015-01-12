@@ -1,45 +1,46 @@
-var moveCount = 1;
-var passesLimit = 'infinite';
-var doubleDeck = false;
-
-var cards = [];
-
-_.each(Card.SUITS, function (suit) {
-  _.each(Card.RANKS, function (rank) {
-    cards.push(new Card({
-      rank: rank,
-      suit: suit
-    }));
-  });
+this.settings = new Settings();
+new SettingsView({
+  el: '#settings',
+  model: this.settings
 });
 
-cards = _.shuffle(cards);
+var doubleDeck = this.settings.get('doubleDeck');
+var cards = Card.getShuffledDeck();
+var pileCount = doubleDeck ? 9 : 7;
+var foundationCount = doubleDeck ? 8 : 4;
+var $piles = $('.piles');
+var $foundations = $('.foundations');
 
-_.times(7, function (n) {
-  new CardsView({
-    el: '#game .pile' + (n+1),
+if (doubleDeck)
+  $('#game').addClass('double-deck');
+
+var view;
+_.times(pileCount, function (n) {
+  view = new CardsView({
     collection: new Pile(cards.splice(0, n+1))
   });
+  $piles.append(view.render().$el);
 });
 
-this.waste = new Waste([], {moveCount: moveCount});
+this.waste = new Waste();
 new WasteView({
   el: '#game .waste',
   collection: this.waste
-});
+}).render();
 
-this.deck = new Deck(cards, {moveCount: moveCount});
+this.deck = new Deck(cards);
 new DeckView({
   el: '#game .deck',
   collection: this.deck
-});
+}).render();
 
 this.foundations = [];
-_.times(4, function (n) {
-  var foundation = new Foundation();
+var foundation;
+_.times(foundationCount, function (n) {
+  foundation = new Foundation();
   this.foundations.push(foundation);
-  new CardsView({
-    el: '#game .foundation' + (n+1),
+  view = new CardsView({
     collection: foundation
   });
+  $foundations.append(view.render().$el);
 });

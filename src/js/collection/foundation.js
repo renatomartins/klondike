@@ -13,7 +13,7 @@ var Foundation = Cards.extend({
 
     if (isComplete) {
       alert('Yeah! :)');
-      window.location.reload(false);;
+      window.location.reload(false);
     }
   },
 

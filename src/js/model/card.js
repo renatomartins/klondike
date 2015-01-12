@@ -58,11 +58,34 @@ var Card = Backbone.Model.extend({
     '8', '9', '10', 'J', 'Q', 'K'
   ],
 
+
   SUITS: ['hearts', 'clubs', 'diamonds', 'spades'],
+
+
+  getDeck: function () {
+    var cards = [];
+    _.each(this.SUITS, function (suit) {
+      _.each(this.RANKS, function (rank) {
+        cards.push(new Card({rank: rank, suit: suit}));
+      });
+    }, this);
+    return cards;
+  },
+
+
+  getShuffledDeck: function () {
+    var cards = this.getDeck();
+    // merge another deck according to settings
+    if (settings.get('doubleDeck'))
+      Array.prototype.push.apply(cards, this.getDeck());
+    return _.shuffle(cards);
+  },
+
 
   getRankIndex: function (rank) {
     return this.RANKS.indexOf(rank);
   },
+
 
   getSuitIndex: function (suit) {
     return this.SUITS.indexOf(suit);

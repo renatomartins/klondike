@@ -35,7 +35,7 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          'build/templates.js': 'src/html/templates/**/*.html'
+          'build/templates.js': 'src/html/templates/*.html'
         }
       }
     },
@@ -43,16 +43,18 @@ module.exports = function (grunt) {
     concat: {
       js: {
         options: {
-          banner: '(function(){',
-          footer: '}())'
+          banner: ';(function(){',
+          footer: '}());'
         },
         src: [
           'bower_components/jquery/dist/jquery.min.js',
           'bower_components/underscore/underscore-min.js',
           'bower_components/backbone/backbone.js',
+          'bower_components/backbone.localStorage/backbone.localStorage-min.js',
           'build/templates.js',
 
           'src/js/model/card.js',
+          'src/js/model/settings.js',
 
           'src/js/collection/cards.js',
           'src/js/collection/deck.js',
@@ -60,6 +62,7 @@ module.exports = function (grunt) {
           'src/js/collection/foundation.js',
           'src/js/collection/pile.js',
 
+          'src/js/view/settings.js',
           'src/js/view/card.js',
           'src/js/view/cards.js',
           'src/js/view/deck.js',

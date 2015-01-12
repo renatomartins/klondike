@@ -2,22 +2,35 @@
 
 A patience card game to play in the browser. :hearts:
 
+Drag & drop the cards to move them between piles and double-click to move to the foundations. Read the rules [here](https://en.wikipedia.org/wiki/Klondike_%28solitaire%29#Rules).
+
 ### Some of the stuff inside (and around):
 
  * Grunt
  * Backbone
  * LESS
  * native HTML5 drag & drop
+ * localStorage
  * flexbox
- * font icons by icomoon
+ * font icons
  * viewport length units
+
+### Browser support
+
+Based on [caniuse.com](caniuse.com):
+
+ * IE 10
+ * Firefox 33
+ * Chrome 34
+ * Safari 7.1
+ * Opera 26
+ * Android Browser 4.4
 
 
 ## TODO
 
- * start options (ex: deal 1 or 3 cards, number of passes through the deck)
  * tests please!
- * move cards with clicks
+ * move cards with single clicks
  * make it extensible to support other solitaire games
  * keyboard shortcuts & ARIA
 

@@ -28,9 +28,10 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background: fade(@white, 30%);
+  background: fade(@color6, 50%);
+  box-shadow: 0 0 5px @black;
 
-  #options {
+  #settings {
     margin: 0 auto;
     max-width: 110vh;
     font-size: 2vmin;
@@ -54,17 +55,14 @@ header {
     }
 
     .waste, .deck {
-      height: @cardHeight / 5;
-      width: @cardWidth / 5;
+      .pileResize(1/5);
       cursor: initial;
     }
     .waste {
       margin-left: 0;
     }
     .card {
-      height: @cardHeight / 5;
-      width: @cardWidth / 5;
-      font-size: @cardFontSize / 5;
+      .cardResize(1/5);
     }
 
     .passes:before {
@@ -83,6 +81,27 @@ header {
 #game {
   margin: @headerHeight+3vmin auto 3vmin;
   max-width: 110vh;
+
+  &.double-deck {
+    .waste, .deck {
+      .pileResize(7/9);
+      .card {
+        .cardResize(7/9);
+      }
+    }
+    .foundations > div {
+      .pileResize(.55);
+      .card {
+        .cardResize(.55);
+      }
+    }
+    .piles > div {
+      .pileResize(7/9);
+      .card {
+        .cardResize(7/9);
+      }
+    }
+  }
 }
 
 .deck {
@@ -102,12 +121,10 @@ header {
 
   &[data-count="3"] .card {
     &:nth-last-child(1) {
-      // margin-left: 5.2vmin;
       margin-left: 2em;
     }
     &:nth-last-child(2),
     &:nth-child(2) {
-      // margin-left: 2.6vmin;
       margin-left: 1em;
     }
     &:first-child {
@@ -119,7 +136,7 @@ header {
 .foundations {
   float: right;
 
-  [class^="foundation"] {
+  & > div {
     .pileMixin;
 
     &:first-child {
@@ -133,20 +150,20 @@ header {
   display: flex;
   justify-content: space-between;
 
-  [class^="pile"] {
+  & > div {
     .pileMixin;
     margin: 0;
 
     .card {
       position: relative;
       float: left;
-      margin-bottom: -@cardHeight + 1vmin;
+      margin-bottom: -6.5em;
 
       &:not(.back) {
-        margin-bottom: -@cardHeight + 3vmin;
+        margin-bottom: -5.8em;
 
         &:hover {
-          margin-bottom: -@cardHeight + 4.5vmin;
+          margin-bottom: -5.3em;
         }
       }
 
